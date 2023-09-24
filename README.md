@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+`<#Currently archive the code for the project protection.#>`
+=======
+>>>>>>> Stashed changes
 ## OTP Verification App
 ### Table of Contents
 1. [Introduction](#introduction)
@@ -69,3 +75,7 @@ npm start
 8. Change the country code or mobile number as needed.
 
 #### Made with ❤️ and ReactJS (aka Javascript)
+<<<<<<< Updated upstream
+=======
+>>>>>>> 1c8bbf92ed429cbadab19dd40eb8bd40b587171b
+>>>>>>> Stashed changes
