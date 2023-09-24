@@ -13,6 +13,7 @@ const App = () => {
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
   const [loading, setLoading] = useState(false);
+  const [verifyLoading, setVerifyLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -33,7 +34,7 @@ const App = () => {
   }
 
   function onSignup() {
-    setLoading(true);
+    setVerifyLoading(true);
     onCaptchVerify();
 
     const appVerifier = window.recaptchaVerifier;
@@ -43,13 +44,13 @@ const App = () => {
     signInWithPhoneNumber(auth, formatPh, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
-        setLoading(false);
+        setVerifyLoading(false);
         setShowOTP(true);
         toast.success("OTP sended successfully!");
       })
       .catch((error) => {
-        console.log(error);
-        setLoading(false);
+        toast.error("Error in sending OTP!");
+        setVerifyLoading(false);
       });
   }
 
@@ -63,36 +64,60 @@ const App = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Error in verifying OTP!");
         setLoading(false);
       });
   }
 
   return (
-    <section className="bg-emerald-500 flex items-center justify-center h-screen">
+    <section className="bg-white flex items-center justify-center h-screen fontFamily-cust">
       <div>
         <Toaster toastOptions={{ duration: 4000 }} />
         <div id="recaptcha-container"></div>
         {user ? (
-          <h2 className="text-center text-white font-medium text-2xl">
-            👍Login Success
-          </h2>
+          <>
+            <img src="/userPage.png" alt="" className="w-72 mx-auto" />
+            <h4 className="text-center leading-normal text-2xl mt-10 mb-0">
+              Welcome to AdmitKard
+            </h4>
+            <p className="text-center leading-normal text-gray-400 font-weight-300 text-md mb-16 ">
+                In order to provide you with <br/>
+                a custom experience,  <br/>
+                we need to ask you a few questions
+            </p>
+            <button
+              className="bg-yellow-500 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded-xl rounded"
+            >
+                <span>Get Started</span>
+              </button>
+              <p className="text-center leading-normal text-gray-400 font-weight-300 text-xs my-2 ">
+                *This will take less than 5 minutes
+            </p>
+          </>
         ) : (
           <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
-            <h1 className="text-center leading-normal text-white font-medium text-3xl mb-6">
-              Welcome to <br /> CODE A PROGRAM
-            </h1>
-            {showOTP ? (
+           {showOTP && <div>
+              <img src="/Admitcard_logo.png" alt="" className="w-100 mx-auto" />
+              <h4 className="text-center leading-normal text-2xl mt-16 mb-0">
+                Welcome Back
+              </h4>
+              <p className="text-center leading-normal text-gray-400 text-md mb-5 ">
+                Please sign in to your account
+              </p>
+              </div>
+            }
+            {!showOTP ? (
               <>
-                <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
-                  <BsFillShieldLockFill size={30} />
-                </div>
-                <label
-                  htmlFor="otp"
-                  className="font-bold text-xl text-white text-center"
-                >
-                  Enter your OTP
-                </label>
+                <img src="/Otp_verify.png" alt="" className="w-40 mx-auto" />
+                <h4 className="text-center leading-normal text-xl mt-10 mb-0">
+                  Please verify Mobile number
+                </h4>
+                <p className="text-center leading-normal text-gray-400 font-medium text-md mb-10 ">
+                  An OTP is sent to +{ ph.substring(0, 2) + " " + ph.substring(2, ph.length) }<br/>
+                  <a href="/" className="text-center border-b-2 border-yellow-500 text-yellow-500 font-medium text-xs p-0 text-decoration-dashed">
+                    Change Phone Number
+                  </a>
+                </p>
                 <OtpInput
                   value={otp}
                   onChange={setOtp}
@@ -102,9 +127,18 @@ const App = () => {
                   autoFocus
                   className="opt-container "
                 ></OtpInput>
+
+                <p className="text-center leading-normal text-gray-400 font-medium text-xs mt-10 m-1">
+                  Didn't receive the OTP?{" "}
+                  <a onClick = {onSignup} 
+                  className="text-center border-b-2 cursor-pointer border-yellow-500 text-yellow-500 font-medium text-xs p-0 text-decoration-dashed">
+                    Resend OTP
+                  </a>
+                </p>
+
                 <button
                   onClick={onOTPVerify}
-                  className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                  className="bg-yellow-500 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded-xl rounded"
                 >
                   {loading && (
                     <CgSpinner size={20} className="mt-1 animate-spin" />
@@ -114,24 +148,19 @@ const App = () => {
               </>
             ) : (
               <>
-                <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
-                  <BsTelephoneFill size={30} />
-                </div>
-                <label
-                  htmlFor=""
-                  className="font-bold text-xl text-white text-center"
-                >
-                  Verify your phone number
-                </label>
                 <PhoneInput country={"in"} value={ph} onChange={setPh} />
+                <p className="text-center leading-normal text-gray-400 font-medium text-xs mt-3 mb-10">
+                  We will send you a one time SMS message.
+                  Charges may apply.
+                </p>
                 <button
                   onClick={onSignup}
-                  className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                  className="bg-yellow-500 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded-xl rounded"
                 >
-                  {loading && (
+                  {verifyLoading && (
                     <CgSpinner size={20} className="mt-1 animate-spin" />
                   )}
-                  <span>Send code via SMS</span>
+                  <span>Sign In with Otp</span>
                 </button>
               </>
             )}
