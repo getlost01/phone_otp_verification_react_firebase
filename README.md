@@ -1,75 +1,71 @@
-![localhost_3000_ (1)](https://user-images.githubusercontent.com/75136330/212552633-fe138d61-89da-4ece-9497-a6c779e50f33.png)
+## OTP Verification App
+### Table of Contents
+1. [Introduction](#introduction)
+2. [Good to Have](#good-to-have)
+3. [Tech Stack](#tech-stack)
+4. [Getting Started](#getting-started)
+5. [Usage](#usage)
 
-![localhost_3000_ (2)](https://user-images.githubusercontent.com/75136330/212552636-ad154d82-2358-4de7-b6b5-c6e68c8b918e.png)
+### Introduction
+
+The OTP Verification App is a web application that verifies mobile phone numbers using one-time passwords (OTP). It's a simple and user-friendly solution.
+Having 3 pages:
+Screen-1: Mobile Number Screen
+Screen-2: OTP Verification Screen
+Screen-3: Success Screen 
+
+### Preview
+<img width="420" src="https://github.com/getlost01/phone_otp_verification_react_firebase/assets/79409258/24460807-db48-40e0-a72c-cdd72e4d30c1">
+<br>
+<img width="420" src="https://github.com/getlost01/phone_otp_verification_react_firebase/assets/79409258/ff4ee9ca-9924-427d-a7ba-f6580bc22b21">
+<br>
+<img width="420" src="https://github.com/getlost01/phone_otp_verification_react_firebase/assets/79409258/021c1ce2-a8b9-4e42-b3c6-d700fa790dab">
 
 
-# Getting Started with Create React App
+### Good to Have
+- **Country Code Selection**: Allow users to choose their country code.
+- **Comprehensive Field Validations**: Prevent users from entering incorrect values.
+- **Error Handling**: Handle various scenarios, like incorrect numbers or failed OTP delivery.
+- **Responsive Design**: Ensure the app works on different devices.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Tech Stack
+- **React.js**: For the front-end.
+- **JavaScript (JS)**: For scripting.
+- **Firebase**: For user accounts and OTP storage.
+- **SMS Service**: For sending OTPs.
+- **REST API**: For backend servers communication
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+To get started with the OTP Verification App, follow these steps:
+1. Clone this repository to your local machine.
+```bash
+git clone https://github.com/your-username/otp-verification-app.git
+```
+2. Navigate to the project directory.
+```bash
+cd otp-verification-app
+```
+3. Install the required dependencies.
+```bash
+npm install
+```
+4. Configure Firebase and the SMS service with your credentials and API keys. Refer to the project's documentation for specific configuration details.
+5. Start the development server.
+```bash
+npm start
+```
+6. Open your web browser and access the app at `http://localhost:3000`.
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Open the app.
+2. Enter your mobile number and, if necessary, select the country code.
+3. Click "Send OTP."
+4. Check your phone for the OTP.
+5. Enter the OTP.
+6. Click "Verify OTP."
+7. See a success message or error.
+8. Change the country code or mobile number as needed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Made with ❤️ and ReactJS (aka Javascript)
