@@ -96,7 +96,7 @@ const App = () => {
           </>
         ) : (
           <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
-           {showOTP && <div>
+           {!showOTP && <div>
               <img src="/Admitcard_logo.png" alt="" className="w-100 mx-auto" />
               <h4 className="text-center leading-normal text-2xl mt-16 mb-0">
                 Welcome Back
@@ -106,7 +106,7 @@ const App = () => {
               </p>
               </div>
             }
-            {!showOTP ? (
+            {showOTP ? (
               <>
                 <img src="/Otp_verify.png" alt="" className="w-40 mx-auto" />
                 <h4 className="text-center leading-normal text-xl mt-10 mb-0">
